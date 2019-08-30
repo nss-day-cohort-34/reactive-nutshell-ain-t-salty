@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MessagesManager from '../../modules/MessagesManager';
-// import './AnimalForm.css'
+import './MessagesForm.css'
 
 class MessagesForm extends Component {
     state = {

@@ -1,9 +1,10 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route, withRouter, Redirect } from "react-router-dom"
 import React, { Component } from "react";
 import MessagesList from './Messages/MessagesList'
 import MessagesDetail from './Messages/MessagesDetail'
 import MessagesForm from './Messages/MessagesForm'
 import MessagesEditForm from './Messages/MessagesEditForm'
+
 
 export default class ApplicationViews extends Component {
 
@@ -27,7 +28,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/messages" render={props => {
-            return <MessagesList {...props} />
+              return <MessagesList {...props} />
           }}
         />
 
