@@ -5,19 +5,22 @@ class Registration extends Component {
 
     // Set initial state
     state = {
+        username: "",
         email: "",
         password: "",
         confirmPassword: ""
     }
 
-    // Update state whenever an input field is edited
+
+
+     // Update state whenever an input field is edited
     handleFieldChange = (evt) => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-
-    createNewUserHandler = evt => {
+    // Save new user to database
+    createNewUser = evt => {
         evt.preventDefault();
         if (this.state.username === "" || this.state.email === "" || this.state.password === "") {
             window.alert("Please enter all fields");
@@ -34,26 +37,6 @@ class Registration extends Component {
             .then(() => this.props.history.push("/news"));
         }
     };
-    // handleLogin = (e) => {
-    //     e.preventDefault()
-    //     /*
-    //         For now, just store the email and password that
-    //         the customer enters into local storage.
-    //     */
-    //     // LoginManager.get(this.state.)
-
-    //     localStorage.setItem(
-    //         "credentials",
-    //         JSON.stringify({
-    //             email: this.state.email,
-    //             password: this.state.password
-    //         })
-    //     )
-    //     this.props.history.push("/news");
-
-    //   }
-
-
 
     render() {
         return (
@@ -85,7 +68,7 @@ class Registration extends Component {
                             required="" />
                         <label htmlFor="inputPassword">Confirm Password</label>
                     </div>
-                    <button type="submit">
+                    <button onClick={this.createNewUser} type="submit">
                         Register New Account
                     </button>
                 </fieldset>
