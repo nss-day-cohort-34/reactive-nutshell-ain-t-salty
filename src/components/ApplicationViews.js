@@ -5,7 +5,8 @@ import MessagesDetail from './Messages/MessagesDetail'
 import MessagesForm from './Messages/MessagesForm'
 import MessagesEditForm from './Messages/MessagesEditForm'
 import Login from './Authentication/Login'
-
+import Welcome from "./Authentication/Welcome";
+import Registration from "./Authentication/Registration";
 
 export default class ApplicationViews extends Component {
 
@@ -15,7 +16,15 @@ export default class ApplicationViews extends Component {
     return (
       <React.Fragment>
 
-        <Route path="/login" component={Login} />
+        <Route exact path="/" component={Welcome} />
+
+        {/* <Route exact path="/Welcome" render={(props) => {
+          return <Welcome />
+        }} /> */}
+
+        <Route path="/Registration" component={Registration} />
+
+        <Route path="/Login" component={Login} />
 
         <Route
           exact path="/" render={props => {
@@ -56,6 +65,13 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/tasks" render={props => {
+            return null
+            // Remove null and return the component which will show the user's tasks
+          }}
+        />
+
+        <Route
+          path="/news" render={props => {
             return null
             // Remove null and return the component which will show the user's tasks
           }}
