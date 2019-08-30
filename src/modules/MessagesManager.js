@@ -10,7 +10,7 @@ export default {
             .then(result => result.json())
     },
     delete(id) {
-        return fetch(`http://${remoteURL}/messages/${id}`, {
+        return fetch(`http://localhost:5002/messages/${id}`, {
             method: "DELETE"
         })
             .then(result => result.json())
