@@ -13,6 +13,15 @@ export default {
         return fetch(`http://${remoteURL}/messages/${id}`, {
             method: "DELETE"
         })
-        .then(result => result.json())
-      }
+            .then(result => result.json())
+    },
+    post(newMessage) {
+        return fetch(`${remoteURL}/messages`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newMessage)
+        }).then(data => data.json())
+    }
 }
