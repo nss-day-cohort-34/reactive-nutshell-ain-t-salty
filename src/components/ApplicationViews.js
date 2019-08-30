@@ -1,11 +1,21 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route, withRouter, Redirect } from "react-router-dom"
 import React, { Component } from "react";
+import MessagesList from './Messages/MessagesList'
+import MessagesDetail from './Messages/MessagesDetail'
+import MessagesForm from './Messages/MessagesForm'
+import MessagesEditForm from './Messages/MessagesEditForm'
+import Login from './Authentication/Login'
+
 
 export default class ApplicationViews extends Component {
+
+  isAuthenticated = () => localStorage.getItem("credentials") !== null
 
   render() {
     return (
       <React.Fragment>
+
+        <Route path="/login" component={Login} />
 
         <Route
           exact path="/" render={props => {
@@ -21,10 +31,26 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+        <Route exact path="/messages" render={props => {
+          if (this.isAuthenticated()) {
+            return <MessagesList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/messages/:messageId(\d+)" render={(props) => {
+          // Pass the messageId to the MessagesDetail Component
+          return <MessagesDetail messageId={parseInt(props.match.params.messageId)} {...props} />
+        }} />
+
+        <Route path="/messages/new" render={(props) => {
+          return <MessagesForm {...props} />
+        }} />
+
         <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+          path="/messages/:messageId(\d+)/edit" render={props => {
+            return <MessagesEditForm {...props} />
           }}
         />
 
@@ -34,7 +60,7 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's tasks
           }}
         />
-        
+
       </React.Fragment>
     );
   }
