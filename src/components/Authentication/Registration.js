@@ -5,19 +5,22 @@ class Registration extends Component {
 
     // Set initial state
     state = {
+        username: "",
         email: "",
         password: "",
         confirmPassword: ""
     }
 
-    // Update state whenever an input field is edited
+
+
+     // Update state whenever an input field is edited
     handleFieldChange = (evt) => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-
-    createNewUserHandler = evt => {
+    // Save new user to database
+    createNewUser = evt => {
         evt.preventDefault();
         if (this.state.username === "" || this.state.email === "" || this.state.password === "") {
             window.alert("Please enter all fields");
@@ -65,7 +68,7 @@ class Registration extends Component {
                             required="" />
                         <label htmlFor="inputPassword">Confirm Password</label>
                     </div>
-                    <button type="submit">
+                    <button onClick={this.createNewUser} type="submit">
                         Register New Account
                     </button>
                 </fieldset>
