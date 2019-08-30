@@ -4,13 +4,18 @@ import MessagesList from './Messages/MessagesList'
 import MessagesDetail from './Messages/MessagesDetail'
 import MessagesForm from './Messages/MessagesForm'
 import MessagesEditForm from './Messages/MessagesEditForm'
+import Login from './Authentication/Login'
 
 
 export default class ApplicationViews extends Component {
 
+  isAuthenticated = () => localStorage.getItem("credentials") !== null
+
   render() {
     return (
       <React.Fragment>
+
+        <Route path="/login" component={Login} />
 
         <Route
           exact path="/" render={props => {
@@ -26,11 +31,13 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route
-          exact path="/messages" render={props => {
-              return <MessagesList {...props} />
-          }}
-        />
+        <Route exact path="/messages" render={props => {
+          if (this.isAuthenticated()) {
+            return <MessagesList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
 
         <Route exact path="/messages/:messageId(\d+)" render={(props) => {
           // Pass the messageId to the MessagesDetail Component
