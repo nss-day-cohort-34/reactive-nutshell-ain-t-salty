@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import MessagesList from './Messages/MessagesList'
 import MessagesDetail from './Messages/MessagesDetail'
 import MessagesForm from './Messages/MessagesForm'
+import MessagesEditForm from './Messages/MessagesEditForm'
 
 export default class ApplicationViews extends Component {
 
@@ -30,7 +31,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route path="/messages/:messageId(\d+)" render={(props) => {
+        <Route exact path="/messages/:messageId(\d+)" render={(props) => {
           // Pass the messageId to the MessagesDetail Component
           return <MessagesDetail messageId={parseInt(props.match.params.messageId)} {...props} />
         }} />
@@ -38,6 +39,12 @@ export default class ApplicationViews extends Component {
         <Route path="/messages/new" render={(props) => {
           return <MessagesForm {...props} />
         }} />
+
+        <Route
+          path="/messages/:messageId(\d+)/edit" render={props => {
+            return <MessagesEditForm {...props} />
+          }}
+        />
 
         <Route
           path="/tasks" render={props => {

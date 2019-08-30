@@ -50,6 +50,7 @@ class MessagesList extends Component {
                             key={message.id}
                             message={message}
                             deleteMessage={this.deleteMessage}
+                            {...this.props}
                         />
                     )}
                 </div>
