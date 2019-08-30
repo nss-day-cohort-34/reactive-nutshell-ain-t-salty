@@ -34,26 +34,6 @@ class Registration extends Component {
             .then(() => this.props.history.push("/news"));
         }
     };
-    // handleLogin = (e) => {
-    //     e.preventDefault()
-    //     /*
-    //         For now, just store the email and password that
-    //         the customer enters into local storage.
-    //     */
-    //     // LoginManager.get(this.state.)
-
-    //     localStorage.setItem(
-    //         "credentials",
-    //         JSON.stringify({
-    //             email: this.state.email,
-    //             password: this.state.password
-    //         })
-    //     )
-    //     this.props.history.push("/news");
-
-    //   }
-
-
 
     render() {
         return (
