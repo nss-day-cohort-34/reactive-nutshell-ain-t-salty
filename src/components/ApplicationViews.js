@@ -7,6 +7,8 @@ import MessagesEditForm from './Messages/MessagesEditForm'
 import Login from './Authentication/Login'
 import Welcome from "./Authentication/Welcome";
 import Registration from "./Authentication/Registration";
+//events
+import EventsList from './Events/EventsList'
 
 export default class ApplicationViews extends Component {
 
@@ -18,34 +20,31 @@ export default class ApplicationViews extends Component {
 
         <Route exact path="/" component={Welcome} />
 
-        {/* <Route exact path="/Welcome" render={(props) => {
-          return <Welcome />
-        }} /> */}
 
         <Route path="/Registration" component={Registration} />
 
         <Route path="/Login" component={Login} />
 
         <Route
-          exact path="/" render={props => {
+          exact path="/articles" render={props => {
             return null
             // Remove null and return the component which will show news articles
           }}
         />
 
         <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+          exact path="/Events" render={props => {
+            return <EventsList />
+            // This is where I will validate user credientials. Only display curent users' events
           }}
         />
 
         <Route exact path="/messages" render={props => {
-          if (this.isAuthenticated()) {
+         // if (this.isAuthenticated()) {
             return <MessagesList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+          // } else {
+          //   return <Redirect to="/login" />
+          // }
         }} />
 
         <Route exact path="/messages/:messageId(\d+)" render={(props) => {
