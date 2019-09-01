@@ -12,7 +12,8 @@ class EventsCard extends Component {
                     <h3><span className="card-petname"></span>{this.props.event.name}</h3>
                     <p>Location: {this.props.event.location}</p>
                     <p>Date: {this.props.event.date}</p>
-                    <button type="button" onClick={() => this.props.editEvent(this.props.event.id)}>Edit Event</button>
+                    <button type="button"
+                        onClick={() => { this.props.history.push(`/events/${this.props.event.id}/edit`) }}>Edit</button>
                     <button type="button" onClick={() => this.props.deleteEvent(this.props.event.id)}>Delete
                     Event</button>
 

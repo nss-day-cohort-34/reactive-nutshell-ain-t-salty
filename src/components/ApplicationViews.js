@@ -9,6 +9,8 @@ import Welcome from "./Authentication/Welcome";
 import Registration from "./Authentication/Registration";
 //events
 import EventsList from './Events/EventsList'
+import EventsForm from './Events/EventsForm'
+import EventsEditForm from './Events/EventsEditForm'
 
 export default class ApplicationViews extends Component {
 
@@ -19,7 +21,6 @@ export default class ApplicationViews extends Component {
       <React.Fragment>
 
         <Route exact path="/" component={Welcome} />
-
 
         <Route path="/Registration" component={Registration} />
 
@@ -32,16 +33,24 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+        {/* EVENT ROUTES */}
+        <Route exact path="/events" render={props => {
+          return <EventsList {...props} />
+          // This is where I will validate user credientials. Only display curent users' events
+        }}
+        />
         <Route
-          exact path="/Events" render={props => {
-            return <EventsList />
-            // This is where I will validate user credientials. Only display curent users' events
+          path="/events/:eventId(\d+)/edit" render={props => {
+            return <EventsEditForm {...props} />
           }}
         />
+        <Route path="/events/new" render={(props) => {
+          return <EventsForm {...props} />
+        }} />
 
         <Route exact path="/messages" render={props => {
-         // if (this.isAuthenticated()) {
-            return <MessagesList {...props} />
+          // if (this.isAuthenticated()) {
+          return <MessagesList {...props} />
           // } else {
           //   return <Redirect to="/login" />
           // }

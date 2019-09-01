@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 //import the components we will need
 import EventsCard from './EventsCard'
 import EventsManager from '../../modules/EventsManager'
+import "./Events.css"
 
 class EventsList extends Component {
     //define what this component needs to render
@@ -22,29 +23,36 @@ class EventsList extends Component {
 
     deleteEvent = id => {
         EventsManager.deleteEvent(id)
-        .then(() => {
-          EventsManager.getAllEvents()
-          .then((newEvents) => {
-            this.setState({
-                events: newEvents
+            .then(() => {
+                EventsManager.getAllEvents()
+                    .then((newEvents) => {
+                        this.setState({
+                            events: newEvents
+                        })
+                    })
             })
-          })
-        })
-      }
+    }
 
     render() {
         console.log("EventsList: Render");
 
         return (
             <>
-            {/* the class in h1 is part of the bootstrap styling from home page */}
-                <h1 className ="center card">Events</h1>
+                <h1 className="center card">Events</h1>
+                <section className="section-content">
+                    <button type="button"
+                        className="card"
+                        onClick={() => { this.props.history.push("/events/new") }}>
+                        Add Event
+                    </button>
+                </section>
                 <div className="container-cards">
                     {this.state.events.map(event =>
                         <EventsCard
-                        key={event.id}
-                         event={event}
-                         deleteEvent={this.deleteEvent}/>
+                            key={event.id}
+                            event={event}
+                            deleteEvent={this.deleteEvent}
+                            {...this.props} />
                     )}
                 </div>
             </>
