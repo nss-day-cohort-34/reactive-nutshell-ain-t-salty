@@ -30,6 +30,9 @@ class Registration extends Component {
                     alert("Username already exists")
                 } else if (parsedUsers.find(user => user.email.toLowerCase() === this.state.email.toLowerCase())) {
                     alert("Email already exists")
+                    console.log(this.state.email)
+                } else if (this.state.password !== this.state.confirmPassword){
+                    alert("Passwords dont match")
                 } else if (this.state.username === "" || this.state.email === "" || this.state.password === "") {
                     alert("Please fill out all fields")
                 } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email))) {
@@ -56,7 +59,7 @@ class Registration extends Component {
             return (
                 <form>
                     <fieldset>
-                        <h3>Please sign in</h3>
+                        <h3>Register</h3>
                         <div className="formgrid">
                             <input onChange={this.handleFieldChange} type="text"
                                 id="username"
