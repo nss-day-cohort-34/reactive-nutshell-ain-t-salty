@@ -32,7 +32,7 @@ class Registration extends Component {
                 password: this.state.password
             };
 
-            // Create the animal and redirect user to animal list
+            // Create the user and redirect user to news
             LoginManager.createNewUser(user)
             .then(() => this.props.history.push("/news"));
         }
@@ -42,7 +42,7 @@ class Registration extends Component {
         return (
             <form>
                 <fieldset>
-                    <h3>Please sign in</h3>
+                    <h3>Registration</h3>
                     <div className="formgrid">
                         <input onChange={this.handleFieldChange} type="text"
                             id="username"

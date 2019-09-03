@@ -5,12 +5,13 @@ class Welcome extends Component {
     render() {
         return (
             <>
-                <div className="card">
+                <div>
                     <h1>Welcome to Nutshell</h1>
                 </div>
-
-                <Link to="/Registration"><button>Register New Account</button></Link>
-                <Link to="/Login"><button>Login</button></Link>
+                <div className="content">    
+                    <Link to="/Login"><button>Login</button></Link>
+                    <Link to="/Registration"><button>Register New Account</button></Link>
+                </div>
             </>
         );
     }

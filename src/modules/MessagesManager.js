@@ -1,12 +1,12 @@
 const remoteURL = "http://localhost:5002"
 
 export default {
-    get(id) {
-        return fetch(`${remoteURL}/messages/${id}`)
+    get(id, userId) {
+        return fetch(`${remoteURL}/messages/${id}&userId=${userId}`)
             .then(result => result.json())
     },
     getAll() {
-        return fetch(`${remoteURL}/messages`)
+        return fetch(`${remoteURL}/messages?_expand=user`)
             .then(result => result.json())
     },
     delete(id) {
@@ -16,7 +16,7 @@ export default {
             .then(result => result.json())
     },
     post(newMessage) {
-        return fetch(`${remoteURL}/messages`, {
+        return fetch(`${remoteURL}/messages?_expand=user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
