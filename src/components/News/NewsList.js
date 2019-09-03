@@ -50,6 +50,7 @@ class NewsList extends Component {
                         key={article.id}
                         article={article}
                         deleteArticle={this.deleteArticle}
+                        {...this.props}
                     />
                 )}
             </div>

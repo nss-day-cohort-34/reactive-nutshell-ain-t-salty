@@ -8,7 +8,6 @@ import Login from './Authentication/Login'
 import Welcome from "./Authentication/Welcome";
 import Registration from "./Authentication/Registration";
 import NewsList from "./News/NewsList";
-// import NewsDetail from "./News/NewsDetail"
 import NewsForm from "./News/NewsForm"
 import NewsEditForm from "./News/NewsEditForm"
 
@@ -36,7 +35,7 @@ export default class ApplicationViews extends Component {
             return null
             // Remove null and return the component which will show news articles
           }}
-        /> */}
+        /> 
 
         {/* EVENT ROUTES */}
         <Route exact path="/events" render={props => {

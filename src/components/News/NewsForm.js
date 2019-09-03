@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NewsManager from '../../modules/NewsManager';
-// import './AnimalForm.css'
+
 
 class NewsForm extends Component {
     state = {

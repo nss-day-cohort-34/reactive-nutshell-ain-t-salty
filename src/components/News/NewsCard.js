@@ -1,6 +1,5 @@
 // How a single article will look on the page.
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
 class NewsCard extends Component {
   render() {
