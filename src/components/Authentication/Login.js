@@ -32,9 +32,9 @@ class Login extends Component {
             })
         )
         this.props.history.push("/news");
-    
+
       }
-    
+
 render() {
         return (
             <form onSubmit={this.handleLogin}>

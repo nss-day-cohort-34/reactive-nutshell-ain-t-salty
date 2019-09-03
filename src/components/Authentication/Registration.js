@@ -32,7 +32,7 @@ class Registration extends Component {
                 password: this.state.password
             };
 
-            // Create the animal and redirect user to animal list
+            // Create the user and redirect user to news
             LoginManager.createNewUser(user)
             .then(() => this.props.history.push("/news"));
         }
