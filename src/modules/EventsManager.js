@@ -8,7 +8,7 @@ export default {
         return fetch(`${remoteURL}/events`).then(result => result.json())
     },
     deleteEvent(id) {
-        return fetch(`${remoteURL}/events${id}`, {
+        return fetch(`${remoteURL}/events/${id}`, {
             method: "DELETE"
         })
             .then(result => result.json())
