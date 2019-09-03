@@ -7,6 +7,10 @@ import MessagesEditForm from './Messages/MessagesEditForm'
 import Login from './Authentication/Login'
 import Welcome from "./Authentication/Welcome";
 import Registration from "./Authentication/Registration";
+//events
+import EventsList from './Events/EventsList'
+import EventsForm from './Events/EventsForm'
+import EventsEditForm from './Events/EventsEditForm'
 
 export default class ApplicationViews extends Component {
 
@@ -18,34 +22,38 @@ export default class ApplicationViews extends Component {
 
         <Route exact path="/" component={Welcome} />
 
-        {/* <Route exact path="/Welcome" render={(props) => {
-          return <Welcome />
-        }} /> */}
-
         <Route path="/Registration" component={Registration} />
 
         <Route path="/Login" component={Login} />
 
         <Route
-          exact path="/" render={props => {
+          exact path="/articles" render={props => {
             return null
             // Remove null and return the component which will show news articles
           }}
         />
 
+        {/* EVENT ROUTES */}
+        <Route exact path="/events" render={props => {
+          return <EventsList {...props} />
+          // This is where I will validate user credientials. Only display curent users' events
+        }}
+        />
         <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+          path="/events/:eventId(\d+)/edit" render={props => {
+            return <EventsEditForm {...props} />
           }}
         />
+        <Route path="/events/new" render={(props) => {
+          return <EventsForm {...props} />
+        }} />
 
         <Route exact path="/messages" render={props => {
-          if (this.isAuthenticated()) {
-            return <MessagesList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+          // if (this.isAuthenticated()) {
+          return <MessagesList {...props} />
+          // } else {
+          //   return <Redirect to="/login" />
+          // }
         }} />
 
         <Route exact path="/messages/:messageId(\d+)" render={(props) => {
