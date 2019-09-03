@@ -7,23 +7,27 @@
     margin-bottom: 2em;
     flex: 0 1 24%;
   }
-  
+
   .card-content {
     padding: .5em;
   }
-  
+
   .card-content h3 {
     margin-top: 0;
     margin-bottom: .5em;
     font-weight: bold;
     color: rgb(43, 112, 241);
   }
-  
+
   .card-content p {
     font-size: 80%;
     color: darkslategrey;
   }
-  
+
+  .content-petname {
+    color: darkslategrey;
+  }
+
   .card button {
     background-color: cornflowerblue;
     border: none;
@@ -37,12 +41,7 @@
     margin: .1em;
     width: 100%;
   }
-  
+
   .card button:hover {
     background-color: darkblue;
-  }
-
-  .btn {
-    border: 1px solid black;
-    margin: 10px;
   }
