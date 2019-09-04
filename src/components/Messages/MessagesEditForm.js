@@ -6,6 +6,7 @@ class MessagesEditForm extends Component {
     //set the initial state
     state = {
       message: "",
+      userId: "",
       loadingStatus: true,
     };
 
@@ -20,7 +21,9 @@ class MessagesEditForm extends Component {
       this.setState({ loadingStatus: true });
       const editedMessage = {
         message: this.state.message,
-        id: this.props.match.params.messageId
+        userId: sessionStorage.getItem("credentials"),
+        id: this.props.match.params.messageId,
+        // userId: sessionStorage.getItem("credentials")
       };
 
       MessagesManager.update(editedMessage)
