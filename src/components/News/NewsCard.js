@@ -9,7 +9,7 @@ class NewsCard extends Component {
           <p>Title: {this.props.article.title}</p>
           <p>Synopsis: {this.props.article.synopsis}</p>
           <p><a href={this.props.article.URL}>{this.props.article.URL}</a></p>
-          {/* <p><Timestamp date={Date} /></p> */}
+          <p>Timestamp: {this.props.article.timestamp}</p>
           <button type="button" onClick={() => this.props.deleteArticle(this.props.article.id)}>Delete</button>
           <button type="button" onClick={() => {this.props.history.push(`/news/${this.props.article.id}/edit`)}}>Edit</button>
         </div>
@@ -20,5 +20,4 @@ class NewsCard extends Component {
 
 export default NewsCard;
 
-// const timestamp = new Date().toLocaleString()
 

@@ -25,11 +25,12 @@ class NewsForm extends Component {
             window.alert("Please complete all fields.");
         } else {
             this.setState({ loadingStatus: true });
+            const timestamp = new Date().toLocaleString()
             const article = {
                 title: this.state.title,
                 synopsis: this.state.synopsis,
                 URL: this.state.URL,
-                timestamp: this.state.timestamp
+                timestamp: timestamp
             };
 
             // Create the article and redirect user to article list
