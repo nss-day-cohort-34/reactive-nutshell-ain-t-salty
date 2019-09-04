@@ -8,6 +8,7 @@ class NewsEditForm extends Component {
         title: "",
         synopsis: "",
         URL: "",
+        timestamp: "",
         loadingStatus: true
     }
 
