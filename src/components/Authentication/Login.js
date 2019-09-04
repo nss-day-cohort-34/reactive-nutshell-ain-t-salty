@@ -25,7 +25,7 @@ class Login extends Component {
                 this.props.history.push("/news");
             } else {
                 alert("Incorrect email or password")
-            }
+            } 
         })
     }
 
