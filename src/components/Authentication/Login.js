@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import LoginManager from "../../modules/LoginManager";
-
+import UsersManager from "../../modules/UsersManager";
 class Login extends Component {
 
     // Set initial state
@@ -18,24 +18,18 @@ class Login extends Component {
 
     handleLogin = (e) => {
         e.preventDefault()
-        /*
-            For now, just store the email and password that
-            the customer enters into local storage.
-        */
-        // LoginManager.get(this.state.)
+        UsersManager.checkUser(this.state.email, this.state.password)
+        .then(results=>{
+            if(results.length>0) {
+                sessionStorage.setItem("credentials", results[0].id)
+                this.props.history.push("/news");
+            } else {
+                alert("Incorrect email or password")
+            }
+        })
+    }
 
-        localStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                email: this.state.email,
-                password: this.state.password
-            })
-        )
-        this.props.history.push("/news");
-    
-      }
-    
-render() {
+    render() {
         return (
             <form onSubmit={this.handleLogin}>
                 <fieldset>
@@ -60,7 +54,7 @@ render() {
             </form>
         )
     }
-
 }
+
 
 export default Login

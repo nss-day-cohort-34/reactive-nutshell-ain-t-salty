@@ -16,6 +16,7 @@ class MessagesList extends Component {
             .then((messages) => {
                 this.setState({
                     messages: messages
+                    
                 })
             })
     }
