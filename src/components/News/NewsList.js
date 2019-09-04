@@ -61,3 +61,5 @@ class NewsList extends Component {
 
 
 export default NewsList
+
+// const timestamp = new Date().toLocaleString()

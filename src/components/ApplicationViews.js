@@ -18,7 +18,7 @@ import EventsEditForm from './Events/EventsEditForm'
 
 export default class ApplicationViews extends Component {
 
-  isAuthenticated = () => localStorage.getItem("credentials") !== null
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
     return (

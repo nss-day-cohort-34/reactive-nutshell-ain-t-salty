@@ -23,7 +23,7 @@ class NewsEditForm extends Component {
       const editedArticle = {
         id: this.props.match.params.articleId,
         title: this.state.title,
-        synposis: this.state.synopsis,
+        synopsis: this.state.synopsis,
         URL: this.state.URL
       };
 

@@ -7,6 +7,7 @@ class NewsForm extends Component {
         title: "",
         synopsis: "",
         URL: "",
+        timestamp: "",
         loadingStatus: false
     }
 
@@ -27,7 +28,8 @@ class NewsForm extends Component {
             const article = {
                 title: this.state.title,
                 synopsis: this.state.synopsis,
-                URL: this.state.URL
+                URL: this.state.URL,
+                timestamp: this.state.timestamp
             };
 
             // Create the article and redirect user to article list
