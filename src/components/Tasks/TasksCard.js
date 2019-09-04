@@ -7,7 +7,7 @@ class TasksCard extends Component {
     return (
         <>
       <div className="card">
-          {this.props.task.task}
+          {this.props.task.task} {this.props.task.date}
           </div>
           <button type="checkbox" onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/checked`)}}>Mark Task Complete</button>
           <button type="button" onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/edit`)}}>Edit</button>
