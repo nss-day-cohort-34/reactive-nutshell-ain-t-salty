@@ -5,6 +5,7 @@ import './MessagesForm.css'
 class MessagesForm extends Component {
     state = {
         message: "",
+        userId: "",
         loadingStatus: false,
     };
 
@@ -23,7 +24,8 @@ class MessagesForm extends Component {
         } else {
             this.setState({ loadingStatus: true });
             const message = {
-                message: this.state.message
+                message: this.state.message,
+                userId: sessionStorage.getItem("credentials")
             };
 
             // Create the message and redirect user to message list

@@ -35,7 +35,7 @@ export default class ApplicationViews extends Component {
             return null
             // Remove null and return the component which will show news articles
           }}
-        /> 
+        />
 
         {/* EVENT ROUTES */}
         <Route exact path="/events" render={props => {
@@ -53,11 +53,11 @@ export default class ApplicationViews extends Component {
         }} />
 
         <Route exact path="/messages" render={props => {
-           if (this.isAuthenticated()) {
+          if (this.isAuthenticated()) {
           return <MessagesList {...props} />
-           } else {
+          } else {
             return <Redirect to="/login" />
-           }
+          }
         }} />
 
         <Route exact path="/messages/:messageId(\d+)" render={(props) => {
