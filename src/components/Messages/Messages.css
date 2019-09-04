@@ -5,7 +5,8 @@
     border-radius: 5px; /* 5px rounded corners */
     background: aliceblue;
     margin-bottom: 2em;
-    flex: 0 1 24%;
+    display: flex;
+    /* flex: 0 1 24%; */
   }
   
   .card-content {
