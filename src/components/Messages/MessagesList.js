@@ -44,7 +44,7 @@ class MessagesList extends Component {
                         onClick={() => { this.props.history.push("/messages/new") }}>
                         New Message
                     </button>
-                </section>
+                </section>  
                 <div className="container-cards">
                     {this.state.messages.map(message =>
                         <MessagesCard

@@ -14,7 +14,7 @@ export default {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(user)
-        }).then(results => results.json())
+        }).then(results => results.json()) 
 
     }
 }
