@@ -7,12 +7,11 @@ class TasksCard extends Component {
     return (
         <>
       <div className="card">
-          {this.props.task.userId}: {this.props.task.task}
+          {this.props.task.task}
           </div>
-          <input type="checkbox" onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/checked`)}}>Mark Task Complete</input>
+          <button type="checkbox" onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/checked`)}}>Mark Task Complete</button>
           <button type="button" onClick={() => {this.props.history.push(`/tasks/${this.props.task.id}/edit`)}}>Edit</button>
           <button type="button" onClick={() => this.props.deleteTask(this.props.task.id)}>Delete Task</button>
-          <Link to={`/tasks/${this.props.task.id}`}><button>Details</button></Link>
           </>
     );
   }

@@ -20,12 +20,12 @@ class TasksForm extends Component {
     constructNewTask = evt => {
         evt.preventDefault();
         if (this.state.task === "" || this.state.date === "") {
-            window.alert("Please input an task and date");
+            window.alert("Please input a task and date");
         } else {
             this.setState({ loadingStatus: true });
             const task = {
-                name: this.state.task,
-                breed: this.state.date,
+                task: this.state.task,
+                date: this.state.date,
             };
 
             // Create the task and redirect user to task list

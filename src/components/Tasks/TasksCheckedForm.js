@@ -10,6 +10,8 @@ class TasksCheckedForm extends Component {
       checkedStatus: true,
     };
 
+    
+
     handleFieldChange = evt => {
       const stateToChange = {}
       stateToChange[evt.target.id] = evt.target.value
@@ -21,8 +23,8 @@ class TasksCheckedForm extends Component {
       this.setState({ checkedStatus: true });
       const checkedTask = {
         id: this.props.match.params.taskId,
-        name: this.state.task,
-        breed: this.state.date
+        task: this.state.task,
+        date: this.state.date
       };
 
       TasksManager.update(checkedTask)
@@ -56,11 +58,11 @@ class TasksCheckedForm extends Component {
               />
               <label htmlFor="task">Task</label>
 
-              <input
+              <button
                 type="checkbox" disabled={this.state.checkedStatus}
                 onClick={this.updateCheckedTask}
                 className="chk chk-primary"
-              >Mark Task Complete</input>
+              >Mark Task Complete</button>
               <input
                 type="text"
                 required
