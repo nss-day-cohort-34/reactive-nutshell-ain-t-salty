@@ -7,6 +7,10 @@ import MessagesEditForm from './Messages/MessagesEditForm'
 import Login from './Authentication/Login'
 import Welcome from "./Authentication/Welcome";
 import Registration from "./Authentication/Registration";
+import NewsList from "./News/NewsList";
+import NewsForm from "./News/NewsForm"
+import NewsEditForm from "./News/NewsEditForm"
+
 //events
 import EventsList from './Events/EventsList'
 import EventsForm from './Events/EventsForm'
@@ -14,7 +18,7 @@ import EventsEditForm from './Events/EventsEditForm'
 
 export default class ApplicationViews extends Component {
 
-  isAuthenticated = () => localStorage.getItem("credentials") !== null
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
     return (
@@ -31,7 +35,7 @@ export default class ApplicationViews extends Component {
             return null
             // Remove null and return the component which will show news articles
           }}
-        />
+        /> 
 
         {/* EVENT ROUTES */}
         <Route exact path="/events" render={props => {
@@ -78,12 +82,23 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+        <Route exact path="/news" render={props => {
+          if (this.isAuthenticated()) {
+            return <NewsList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
         <Route
-          path="/news" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+          path="/news/:articleId(\d+)/edit" render={props => {
+            return <NewsEditForm {...props} />
           }}
         />
+
+        <Route path="/news/new" render={(props) => {
+          return <NewsForm {...props} />
+        }} />
 
       </React.Fragment>
     );
