@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css"
+import React, { Component } from "./node_modules/react"
+import { Link } from "./node_modules/react-router-dom"
+import "./node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import './NavBar.css'
 
 
