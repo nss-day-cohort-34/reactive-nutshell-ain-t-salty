@@ -7,14 +7,19 @@ import MessagesEditForm from './Messages/MessagesEditForm'
 import Login from './Authentication/Login'
 import Welcome from "./Authentication/Welcome";
 import Registration from "./Authentication/Registration";
+import TasksList from "./Tasks/TasksList";
+import TasksDetail from './Tasks/TasksDetail'
+import TasksForm from './Tasks/TasksForm'
+import TasksEditForm from './Tasks/TasksEditForm'
+import TasksCheckedForm from "./Tasks/TasksCheckedForm";
 
 export default class ApplicationViews extends Component {
 
-  isAuthenticated = () => localStorage.getItem("credentials") !== null
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
   render() {
     return (
-      <React.Fragment>
+      <>
 
         <Route exact path="/" component={Welcome} />
 
@@ -22,9 +27,9 @@ export default class ApplicationViews extends Component {
           return <Welcome />
         }} /> */}
 
-        <Route path="/Registration" component={Registration} />
+        <Route exact path="/Registration" component={Registration} />
 
-        <Route path="/Login" component={Login} />
+        <Route exact path="/Login" component={Login} />
 
         <Route
           exact path="/" render={props => {
@@ -63,21 +68,54 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+        <Route exact path="/tasks" render={props => {
+            if (this.isAuthenticated()) {
+              return <TasksList {...props} />
+            } else {
+              return <Redirect to="/login" />
+            }
           }}
         />
+
+        <Route exact path="/tasks/:taskId(\d+)" render={props => {
+          // Pass the taskId to the TasksDetail Component
+          return <TasksDetail taskId={parseInt(props.match.params.taskId)} {...props}/>
+        }} />
+
+         {/* Our shiny new route. */}
+        <Route path="/tasks/new" render={(props) => {
+          return <TasksForm {...props} />
+        }} />
+
+        <Route
+          exact path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TasksEditForm {...props} />
+          }}
+        />
+
+        <Route
+          path="/tasks/:taskId(\d+)/checked" render={props => {
+            return <TasksCheckedForm {...props} />
+          }}
+        />
+
+        {/*
+          This is a new route to handle a URL with the following pattern:
+          http://localhost:3000/tasks/1
+          
+          It will not handle the following URL because the `(\d+)`
+          matches only numbers after the final slash in the URL
+          http://localhost:3000/tasks/jack
+        */}
 
         <Route
           path="/news" render={props => {
             return null
-            // Remove null and return the component which will show the user's tasks
+            // Remove null and return the component which will show the user's news
           }}
         />
+}} />
 
-      </React.Fragment>
+      </>
     );
-  }
-}
+  }}
