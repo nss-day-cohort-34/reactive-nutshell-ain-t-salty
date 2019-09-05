@@ -13,15 +13,18 @@ textarea {
     line-height: 1.5;
 }
 /* messages */
-.edit,
+.edit {
+    float:left;
+}
 .delete {
-display: inline-block;
+float:right;
 }
 
 /* position delete and edit btns */
 .btnParent{
-width:10%;
+width:20%;
 height:5%;
+clear: both;
 }
 .margin{
     padding-left: 30%;
