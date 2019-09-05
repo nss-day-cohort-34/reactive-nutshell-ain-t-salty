@@ -8,6 +8,7 @@ class NewsEditForm extends Component {
         title: "",
         synopsis: "",
         URL: "",
+        timestamp: "",
         loadingStatus: true
     }
 
@@ -20,11 +21,13 @@ class NewsEditForm extends Component {
     updateExistingArticle = evt => {
       evt.preventDefault()
       this.setState({ loadingStatus: true });
+      const timestamp = new Date().toLocaleString()
       const editedArticle = {
         id: this.props.match.params.articleId,
         title: this.state.title,
         synopsis: this.state.synopsis,
-        URL: this.state.URL
+        URL: this.state.URL,
+        timestamp: timestamp
       };
 
       NewsManager.updateArticle(editedArticle)
@@ -34,10 +37,12 @@ class NewsEditForm extends Component {
     componentDidMount() {
       NewsManager.getArticle(this.props.match.params.articleId)
       .then(article => {
+          const timestamp = new Date().toLocaleString()
           this.setState({
             title: article.title,
             synopsis: article.synopsis,
             URL: article.URL,
+            timestamp: timestamp,
             loadingStatus: false,
           });
       });
