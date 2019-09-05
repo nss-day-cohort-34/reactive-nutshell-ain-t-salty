@@ -14,17 +14,18 @@ textarea {
 }
 /* messages */
 .edit {
-    float:left;
+    margin-left:100%;
 }
 .delete {
-float:right;
+
+margin-left:100%;
 }
 
 /* position delete and edit btns */
 .btnParent{
 width:20%;
 height:5%;
-clear: both;
+display:flex;
 }
 .margin{
     padding-left: 30%;
