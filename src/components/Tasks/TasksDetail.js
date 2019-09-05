@@ -7,6 +7,7 @@ class TasksDetail extends Component {
   state = {
       task: "",
       date: "",
+      loadingStatus: true,
   }
 
   componentDidMount(){
@@ -18,7 +19,6 @@ class TasksDetail extends Component {
         task: task.task,
         date: task.date,
         loadingStatus: false,
-        checkedStatus: false
       });
     });
   }
@@ -30,19 +30,25 @@ class TasksDetail extends Component {
     .then(() => this.props.history.push("/tasks"))
 }
 
-handleCheckbox = () => {
-    this.setState({checkedStatus: true})
-    TasksManager.checked(this.props.taskId)
-    .then(() => this.props.history.push("/tasks"))
-}
-
   render() {
     return (
         <>
       <div className="card">
           {this.props.task.task}
       </div>
-        <input type="checkbox" checked={this.state.checked} onChange={this.onChangeAction.bind(this)}/>
+      <label>
+          <input
+            type="radio"
+            name="react-tips"
+            value="option1"
+            checked={true}
+            className="form-check-input"
+            checked={this.state.selectedOption === "option1"}
+            onChange={this.handleOptionChange}
+            onSubmit={this.handleFormSubmit}>
+            </input>
+          Task Complete
+        </label>
         <button type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</button>
         <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Delete Task</button>
         </>
