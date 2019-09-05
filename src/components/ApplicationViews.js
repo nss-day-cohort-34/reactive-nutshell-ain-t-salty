@@ -60,22 +60,22 @@ export default class ApplicationViews extends Component {
            return <MessagesEditForm {...props} />
          }}
        />
-           <Route exact path="/tasks" render={props => {
-                       if (this.isAuthenticated()) {
-                         return <TasksList {...props} />
-                       } else {
-                         return <Redirect to="/login" />
-                       }
-                     }}
+                      <Route exact path="/tasks" render={props => {
+                                if (this.isAuthenticated()) {
+                                  return <TasksList {...props} />
+                                } else {
+                                  return <Redirect to="/login" />
+                                }
+                              }}
                    />
            
-                   <Route exact path="/tasks/:taskId(\d+)" render={props => {
+                     <Route exact path="/tasks/:taskId(\d+)" render={props => {
                      // Pass the taskId to the TasksDetail Component
                      return <TasksDetail taskId={parseInt(props.match.params.taskId)} {...props}/>
                    }} />
            
                     {/* Our shiny new route. */}
-                   <Route path="/tasks/new" render={(props) => {
+                <Route path="/tasks/new" render={(props) => {
                      return <TasksForm {...props} />
                    }} />
            
@@ -86,7 +86,7 @@ export default class ApplicationViews extends Component {
                    />
            
                    <Route
-                     path="/tasks/:taskId(\d+)/checked" render={props => {
+                     exact path="/tasks/:taskId(\d+)/checked" render={props => {
                        return <TasksCheckedForm {...props} />
                      }}
                    />

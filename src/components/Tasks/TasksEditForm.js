@@ -20,9 +20,9 @@ class TasksEditForm extends Component {
       evt.preventDefault()
       this.setState({ loadingStatus: true });
       const editedTask = {
-        id: this.props.match.params.taskId,
         task: this.state.task,
-        date: this.state.date
+        date: this.state.date,
+        id: this.props.match.params.taskId
       };
 
       TasksManager.update(editedTask)
@@ -57,7 +57,7 @@ class TasksEditForm extends Component {
               <label htmlFor="task">Task</label>
 
               <input
-                type="text"
+                type="date"
                 required
                 className="form-control"
                 onChange={this.handleFieldChange}

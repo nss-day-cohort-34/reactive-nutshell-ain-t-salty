@@ -1,85 +1,56 @@
-import React, { Component } from "react"
-import TasksManager from "../../modules/TasksManager"
-import "./TasksForm.css"
+import React, { Component } from "react";
+import './TasksForm.css'
 
 class TasksCheckedForm extends Component {
-    //set the initial state
-    state = {
-      task: "",
-      date: "",
-      checkedStatus: true,
+  constructor(props) {
+    super(props);
+  this.state = {
+    task: "",
+    date: "",
+    selectedOption: "option1"
     };
+  }
 
-    
-
-    handleFieldChange = evt => {
-      const stateToChange = {}
-      stateToChange[evt.target.id] = evt.target.value
-      this.setState(stateToChange)
-    }
-
-    updateCheckedTask = evt => {
-      evt.preventDefault()
-      this.setState({ checkedStatus: true });
-      const checkedTask = {
-        id: this.props.match.params.taskId,
-        task: this.state.task,
-        date: this.state.date
-      };
-
-      TasksManager.update(checkedTask)
-      .then(() => this.props.history.push("/tasks"))
-    }
-
-    componentDidMount() {
-      TasksManager.get(this.props.match.params.taskId)
-      .then(task => {
-          this.setState({
-            task: task.task,
-            date: task.date,
-            checkedStatus: false,
-          });
+    handleOptionChange = changeEvent => {
+      this.setState({
+        selectedOption: changeEvent.target.value
       });
+    };
+    
+    handleFormSubmit = formSubmitEvent => {
+      formSubmitEvent.preventDefault();
+
     }
 
-    render() {
-      return (
-        <>
-        <form>
-          <fieldset>
-            <div className="formgrid">
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="task"
-                value={this.state.task}
-              />
-              <label htmlFor="task">Task</label>
+  render() {
+    return (
+    
+    <form>
 
-              <button
-                type="checkbox" disabled={this.state.checkedStatus}
-                onClick={this.updateCheckedTask}
-                className="chk chk-primary"
-              >Mark Task Complete</button>
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="date"
-                value={this.state.date}
-              />
-              <label htmlFor="date">Date Completed</label>
-            </div>
-            <div className="alignRight">
-            </div>
-          </fieldset>
-        </form>
-        </>
-      );
+      <div className="form-check">
+        <label>
+          <input
+            type="radio"
+            name="react-tips"
+            value="option1"
+            checked={false}
+            className="form-check-input"
+            checked={this.state.selectedOption === "option1"}
+            onChange={this.handleOptionChange}
+            onSubmit={this.handleFormSubmit}>
+            </input>
+          Task Complete
+        </label>
+      </div>
+      <div className="form-group">
+                <button className="btn btn-primary mt-2" type="submit">
+                  Save Task As Complete
+                </button>
+              </div>
+      </form>
+  )}
+
     }
-}
 
-export default TasksCheckedForm
+export default TasksCheckedForm;       
+  
