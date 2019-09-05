@@ -8,11 +8,11 @@ class TasksList extends Component {
   state = {
     tasks: []
   };
-
+  loggedInUser = parseInt(sessionStorage.getItem("credentials"))
   componentDidMount() {
     console.log("TASK LIST: ComponentDidMount");
     //getAll from TasksManager and hang on to that data; put it in state
-    TasksManager.getAll()
+    TasksManager.getAll(this.userId)
         .then(tasks => {
             this.setState({
                 tasks: tasks
@@ -20,10 +20,10 @@ class TasksList extends Component {
       });
     });
   }
-  
+
   deleteTask = id => {
     TasksManager.delete(id).then(() => {
-      TasksManager.getAll().then(newTasks => {
+      TasksManager.getAll(this.userId).then(newTasks => {
         this.setState({
             tasks: newTasks
         });
@@ -44,11 +44,11 @@ class TasksList extends Component {
             </button>
             </section>
             <div className="container-cards">
-                {this.state.tasks.map(task => 
-                    <TasksCard 
-                         key={task.id} 
-                         task={task} 
-                          deleteTask={this.deleteTask} 
+                {this.state.tasks.map(task =>
+                    <TasksCard
+                         key={task.id}
+                         task={task}
+                          deleteTask={this.deleteTask}
                           {...this.props}
                     />
                 )}
@@ -56,12 +56,12 @@ class TasksList extends Component {
         </>
         )
     }
-  
 
 
 
 
 
-  
+
+
 }
 export default TasksList;

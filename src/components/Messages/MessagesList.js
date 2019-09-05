@@ -16,7 +16,7 @@ class MessagesList extends Component {
             .then((messages) => {
                 this.setState({
                     messages: messages
-                    
+
                 })
             })
     }
@@ -40,12 +40,12 @@ class MessagesList extends Component {
             <>
                 <section className="section-content">
                     <button type="button"
-                        className="btn"
+                        className="card"
                         onClick={() => { this.props.history.push("/messages/new") }}>
                         New Message
                     </button>
-                </section>  
-                <div className="container-cards">
+                </section>
+                <div className = "margin">
                     {this.state.messages.map(message =>
                         <MessagesCard
                             key={message.id}
