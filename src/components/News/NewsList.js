@@ -8,11 +8,11 @@ class NewsList extends Component {
     state = {
         articles: [],
     }
-
+loggedInUser = parseInt(sessionStorage.getItem("credentials"))
     componentDidMount() {
         console.log("NEWS LIST: ComponentDidMount");
         //getAll from AnimalManager and hang on to that data; put it in state
-        NewsManager.getAllArticles()
+        NewsManager.getAllArticles(this.loggedInUser)
             .then((articles) => {
                 this.setState({
                     articles: articles
@@ -23,7 +23,7 @@ class NewsList extends Component {
     deleteArticle = id => {
         NewsManager.deleteArticle(id)
             .then(() => {
-                NewsManager.getAllArticles()
+                NewsManager.getAllArticles(this.loggedInUser)
                     .then((newArticle) => {
                         this.setState({
                             articles: newArticle

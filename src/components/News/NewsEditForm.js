@@ -27,7 +27,8 @@ class NewsEditForm extends Component {
         title: this.state.title,
         synopsis: this.state.synopsis,
         URL: this.state.URL,
-        timestamp: timestamp
+        timestamp: timestamp,
+        userId: parseInt(sessionStorage.getItem("credentials"))
       };
 
       NewsManager.updateArticle(editedArticle)

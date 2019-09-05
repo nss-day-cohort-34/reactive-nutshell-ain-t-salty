@@ -27,7 +27,8 @@ class EventsForm extends Component {
             const event = {
                 name: this.state.name,
                 date: this.state.date,
-                location: this.state.location
+                location: this.state.location,
+                userId: parseInt(sessionStorage.getItem("credentials"))
             };
 
             // Create the event and redirect user to event list

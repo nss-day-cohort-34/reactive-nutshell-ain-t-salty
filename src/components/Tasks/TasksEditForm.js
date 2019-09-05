@@ -22,7 +22,8 @@ class TasksEditForm extends Component {
       const editedTask = {
         task: this.state.task,
         date: this.state.date,
-        id: this.props.match.params.taskId
+        id: this.props.match.params.taskId,
+        userId: parseInt(sessionStorage.getItem("credentials"))
       };
 
       TasksManager.update(editedTask)
