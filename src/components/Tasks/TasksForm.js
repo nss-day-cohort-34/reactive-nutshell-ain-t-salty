@@ -50,7 +50,7 @@ class TasksForm extends Component {
                         />
                         <label htmlFor="task">Task</label>
                         <input
-                        type="text"
+                        type="date"
                         required
                         onChange={this.handleFieldChange}
                         id="date"
