@@ -29,22 +29,22 @@ update(editedTask) {
     }).then(data => data.json());
   },
 
-update(completedTask) {
-    return fetch(`${remoteURL}/tasks/${completedTask.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(completedTask)
-      }).then(data => data.json());
-    },
+// update(checkedTask) {
+//     return fetch(`${remoteURL}/tasks/${checkedTask}`, {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(this.checkedTask.id)
+//       }).then(data => data.json());
+//     },
 
+    delete(id) {
+      return fetch(`http://localhost:5002/tasks/${id}`, {
+          method: "DELETE"
+      })
+      .then(result => result.json())
+    }
 
-  delete(id) {
-    return fetch(`http://localhost:5002/tasks/${id}`, {
-        method: "DELETE"
-    })
-    .then(result => result.json())
-  }
 }
 
