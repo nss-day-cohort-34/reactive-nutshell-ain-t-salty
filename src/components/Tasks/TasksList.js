@@ -9,10 +9,11 @@ class TasksList extends Component {
     tasks: []
   };
   loggedInUser = parseInt(sessionStorage.getItem("credentials"))
+  
   componentDidMount() {
     console.log("TASK LIST: ComponentDidMount");
     //getAll from TasksManager and hang on to that data; put it in state
-    TasksManager.getAll(this.userId)
+    TasksManager.getAll(this.loggedInUser)
         .then(tasks => {
             this.setState({
                 tasks: tasks
@@ -23,7 +24,7 @@ class TasksList extends Component {
 
   deleteTask = id => {
     TasksManager.delete(id).then(() => {
-      TasksManager.getAll(this.userId).then(newTasks => {
+      TasksManager.getAll(this.loggedInUser).then(newTasks => {
         this.setState({
             tasks: newTasks
         });

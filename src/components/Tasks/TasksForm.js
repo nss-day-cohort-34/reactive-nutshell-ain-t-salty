@@ -26,6 +26,7 @@ class TasksForm extends Component {
             const task = {
                 task: this.state.task,
                 date: this.state.date,
+                userId: parseInt(sessionStorage.getItem('credentials'))
             };
 
             // Create the task and redirect user to task list

@@ -9,10 +9,11 @@ class EventsList extends Component {
     state = {
         events: [],
     }
+    
     loggedInUser = parseInt(sessionStorage.getItem("credentials"))
     componentDidMount() {
              //getAll from EventsManager and hang on to that data; put it in state
-        EventsManager.getAllEvents(this.userId)
+        EventsManager.getAllEvents(this.loggedInUser)
             .then((events) => {
                 this.setState({
                     events: events
@@ -23,7 +24,7 @@ class EventsList extends Component {
     deleteEvent = id => {
         EventsManager.deleteEvent(id)
             .then(() => {
-                EventsManager.getAllEvents(this.userId)
+                EventsManager.getAllEvents(this.loggedInUser)
                     .then((newEvents) => {
                         this.setState({
                             events: newEvents
