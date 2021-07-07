@@ -12,6 +12,26 @@ textarea {
     font-size: 14px;
     line-height: 1.5;
 }
+/* messages */
+.edit {
+    margin-left:100%;
+}
+.delete {
+
+margin-left:100%;
+}
+
+/* position delete and edit btns */
+.btnParent{
+width:20%;
+height:5%;
+display:flex;
+}
+.margin{
+    padding-left: 30%;
+    padding-right: 30%;
+}
+/* ================ */
 h1,h2,h3,h4,h5,h6 {
  font-family: 'Patua One', serif;
  letter-spacing: 2px;

@@ -8,11 +8,14 @@ class NewsList extends Component {
     state = {
         articles: [],
     }
+    loggedInUser = parseInt(sessionStorage.getItem("credentials"))
 
     componentDidMount() {
         console.log("NEWS LIST: ComponentDidMount");
         //getAll from AnimalManager and hang on to that data; put it in state
-        NewsManager.getAllArticles()
+        // NewsManager.getAllArticles()
+
+        NewsManager.getAllArticles(this.loggedInUser)
             .then((articles) => {
                 this.setState({
                     articles: articles
@@ -23,7 +26,7 @@ class NewsList extends Component {
     deleteArticle = id => {
         NewsManager.deleteArticle(id)
             .then(() => {
-                NewsManager.getAllArticles()
+                NewsManager.getAllArticles(this.loggedInUser)
                     .then((newArticle) => {
                         this.setState({
                             articles: newArticle
@@ -37,23 +40,23 @@ class NewsList extends Component {
 
         return (
             <React.Fragment>
-            <section className="section-content">
-                <button type="button"
-                    className="btn"
-                    onClick={() => { this.props.history.push("/news/new") }}>
-                    Enter News Article
+                <section className="section-content">
+                    <button type="button"
+                        className="btn"
+                        onClick={() => { this.props.history.push("/news/new") }}>
+                        Enter News Article
                 </button>
-            </section>
-            <div className="container-cards">
-                {this.state.articles.map(article =>
-                    <NewsCard
-                        key={article.id}
-                        article={article}
-                        deleteArticle={this.deleteArticle}
-                        {...this.props}
-                    />
-                )}
-            </div>
+                </section>
+                <div className="container-cards">
+                    {this.state.articles.map(article =>
+                        <NewsCard
+                            key={article.id}
+                            article={article}
+                            deleteArticle={this.deleteArticle}
+                            {...this.props}
+                        />
+                    )}
+                </div>
             </React.Fragment>
         )
     }

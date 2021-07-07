@@ -4,8 +4,13 @@ export default {
     getEvent(id) {
         return fetch(`${remoteURL}/events/${id}`).then(result => result.json())
     },
-    getAllEvents() {
-        return fetch(`${remoteURL}/events`).then(result => result.json())
+    getUserEvents(id, userId) {
+        return fetch(`${remoteURL}/events/${id}&userId=${userId}`)
+            .then(result => result.json())
+    },
+
+    getAllEvents(userId) {
+        return fetch(`${remoteURL}/events?userId=${userId}`).then(result => result.json())
     },
     deleteEvent(id) {
         return fetch(`${remoteURL}/events/${id}`, {

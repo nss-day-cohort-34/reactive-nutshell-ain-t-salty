@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './Messages.css'
+import '../Nutshell.css'
+
 import { Link } from "react-router-dom";
 
 class MessagesCard extends Component {
@@ -8,9 +9,12 @@ class MessagesCard extends Component {
             <>
                 <div className="card">
                     {this.props.message.user.username}: {this.props.message.message}
+                    <div className="btnParent">
+                        <div className="edit"><button type="button" onClick={() => { this.props.history.push(`/messages/${this.props.message.id}/edit`) }}>Edit</button></div>
+                        <div className="delete"><button type="button" onClick={() => this.props.deleteMessage(this.props.message.id)}>Delete</button></div>
+                    </div>
                 </div>
-                <button type="button" onClick={() => { this.props.history.push(`/messages/${this.props.message.id}/edit`) }}>Edit</button>
-                <button type="button" onClick={() => this.props.deleteMessage(this.props.message.id)}>Delete</button>
+
             </>
         );
     }

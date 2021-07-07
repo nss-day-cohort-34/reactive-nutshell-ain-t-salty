@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./Events.css"
-import "../Nutshell.css"
+// import "../Nutshell.css"
 
 class EventsCard extends Component {
     render() {

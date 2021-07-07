@@ -21,6 +21,7 @@ import EventsEditForm from './Events/EventsEditForm'
 
 export default class ApplicationViews extends Component {
  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+ 
 
  render() {
    return (
@@ -68,23 +69,23 @@ export default class ApplicationViews extends Component {
                                 }
                               }}
                    />
-           
+
                      <Route exact path="/tasks/:taskId(\d+)" render={props => {
                      // Pass the taskId to the TasksDetail Component
                      return <TasksDetail taskId={parseInt(props.match.params.taskId)} {...props}/>
                    }} />
-           
+
                     {/* Our shiny new route. */}
                 <Route path="/tasks/new" render={(props) => {
                      return <TasksForm {...props} />
                    }} />
-           
+
                    <Route
                      exact path="/tasks/:taskId(\d+)/edit" render={props => {
                        return <TasksEditForm {...props} />
                      }}
                    />
-           
+
                    <Route
                      exact path="/tasks/:taskId(\d+)/checked" render={props => {
                        return <TasksCheckedForm {...props} />

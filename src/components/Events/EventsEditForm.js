@@ -24,7 +24,8 @@ class EventsEditForm extends Component {
         id: this.props.match.params.eventId,
         name: this.state.name,
         date: this.state.date,
-        location: this.state.location
+        location: this.state.location,
+        userId: parseInt(sessionStorage.getItem('credentials'))// added this to fix by user
       };
 
       EventsManager.updateEvent(editedEvent)

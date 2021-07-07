@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import LoginManager from "../../modules/LoginManager";
+import NewsManager from "../../modules/NewsManager";
 import UsersManager from "../../modules/UsersManager";
 class Login extends Component {
 
@@ -19,14 +19,15 @@ class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
         UsersManager.checkUser(this.state.email, this.state.password)
-        .then(results=>{
-            if(results.length>0) {
-                sessionStorage.setItem("credentials", results[0].id)
-                this.props.history.push("/news");
-            } else {
-                alert("Incorrect email or password")
-            } 
-        })
+            .then(results => {
+                if (results.length > 0) {
+                    sessionStorage.setItem("credentials", results[0].id)
+                    this.props.history.push("/news");
+                 
+                } else {
+                    alert("Incorrect email or password")
+                }
+            })
     }
 
     render() {

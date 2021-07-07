@@ -7,6 +7,7 @@ class EventsForm extends Component {
         name: "",
         date: "",
         location:"",
+        userId:"",
         loadingStatus: false,
     };
 
@@ -23,11 +24,15 @@ class EventsForm extends Component {
         if (this.state.name === "" || this.state.date === ""|| this.state.location === "") {
             window.alert("Please complete all fields");
         } else {
+
             this.setState({ loadingStatus: true });
+
             const event = {
                 name: this.state.name,
                 date: this.state.date,
-                location: this.state.location
+                location: this.state.location,
+                userId: parseInt(sessionStorage.getItem('credentials'))
+                // added this^ put it in the rest of them!
             };
 
             // Create the event and redirect user to event list
